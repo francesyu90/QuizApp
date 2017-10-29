@@ -13,12 +13,20 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="94dp"
+        android:layout_marginTop="120dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
         android:text="What is 48 + 12?"
         android:textAlignment="center"
-        android:textColor="?attr/colorBackgroundFloating"
+        android:textColor="@color/White_T"
         android:textSize="28sp"
         android:textStyle="bold" />
+
+    <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+    </RadioGroup>
 
     <RadioButton
         android:id="@+id/optionAButton"
@@ -27,10 +35,10 @@
         android:layout_below="@+id/questionText"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="54dp"
-        android:buttonTint="?attr/colorBackgroundFloating"
+        android:buttonTint="@color/White_T"
         android:text="60"
         android:textAppearance="@style/TextAppearance.AppCompat"
-        android:textColor="?attr/colorBackgroundFloating"
+        android:textColor="@color/White_T"
         android:textSize="24sp" />
 
     <RadioButton
@@ -41,9 +49,9 @@
         android:layout_alignStart="@+id/optionAButton"
         android:layout_below="@+id/optionAButton"
         android:layout_marginTop="24dp"
-        android:buttonTint="?attr/colorBackgroundFloating"
+        android:buttonTint="@color/White_T"
         android:text="70"
-        android:textColor="?attr/colorBackgroundFloating"
+        android:textColor="@color/White_T"
         android:textSize="24sp" />
 
     <RadioButton
@@ -54,9 +62,9 @@
         android:layout_alignStart="@+id/optionBButton"
         android:layout_below="@+id/optionBButton"
         android:layout_marginTop="24dp"
-        android:buttonTint="?attr/colorBackgroundFloating"
+        android:buttonTint="@color/White_T"
         android:text="80"
-        android:textColor="?attr/colorBackgroundFloating"
+        android:textColor="@color/White_T"
         android:textSize="24sp" />
 
     <Button
@@ -66,8 +74,11 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/optionCButton"
-        android:layout_marginTop="54dp"
-        android:background="#ffffff"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="120dp"
+        android:background="@color/White_T"
+        android:layout_marginLeft="70dp"
+        android:layout_marginRight="70dp"
         android:text="Submit"
         android:textAllCaps="false"
         android:textColor="#53bbb4"
