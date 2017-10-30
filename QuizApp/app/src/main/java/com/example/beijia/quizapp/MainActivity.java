@@ -1,5 +1,6 @@
 package com.example.beijia.quizapp;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -8,6 +9,7 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Random;
 
@@ -85,10 +87,26 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private void showResponse() {
+        Context context = getApplicationContext();
+        Integer selectedId = this.choicesRadioGroup.getCheckedRadioButtonId();
+        this.choicesRadioGroup.clearCheck();
+        RadioButton selectedRadioButton = (RadioButton) this.findViewById(selectedId);
+        CharSequence userInput = selectedRadioButton.getText();
+        int sum = Integer.parseInt(userInput.toString());
+        int expectedSum = this.firstNum + this.secondNum;
+        CharSequence text = (sum == expectedSum)? "Correct answer" : "Incorrect answer";
+        int duration = Toast.LENGTH_SHORT;
+
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
+    }
+
     private void setSubmitButtonListener() {
         View.OnClickListener listener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                showResponse();
                 updateQuestion();
                 updateChoices();
             }
@@ -100,6 +118,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         this.random = new Random();
+        this.firstNum = 48;
+        this.secondNum = 12;
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
