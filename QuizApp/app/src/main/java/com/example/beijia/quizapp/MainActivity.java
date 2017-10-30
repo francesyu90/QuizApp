@@ -11,8 +11,6 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.Random;
-
 public class MainActivity extends AppCompatActivity {
 
     // view variables
@@ -23,7 +21,6 @@ public class MainActivity extends AppCompatActivity {
     private RadioButton optionBButton;
     private RadioButton optionCButton;
 
-    private Question question;
     private int firstNum;
     private int secondNum;
 
@@ -97,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
         RadioButton selectedRadioButton = (RadioButton) this.findViewById(selectedId);
         CharSequence userInput = selectedRadioButton.getText();
         int sum = Integer.parseInt(userInput.toString());
-        int expectedSum = this.question.getSum();
+        int expectedSum = this.firstNum + this.secondNum;
         CharSequence text = (sum == expectedSum)? "Correct answer" : "Incorrect answer";
         int duration = Toast.LENGTH_SHORT;
 
@@ -124,9 +121,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void initialize() {
         utility = new Utility();
-        int firstNum = 48;
-        int secondNum = 12;
-        this.question = new Question(firstNum, secondNum);
+        this.firstNum = 48;
+        this.secondNum = 12;
     }
 
     @Override
