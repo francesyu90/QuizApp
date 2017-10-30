@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private RadioButton optionBButton;
     private RadioButton optionCButton;
 
-    private Random random;
+    private Question question;
     private int firstNum;
     private int secondNum;
 
@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         View backgroundView = this.findViewById(R.id.backgroundView);
         int r = utility.randomNumberGenerator(0, 255);
         int g = utility.randomNumberGenerator(0, 255);
-        int b = utility.randomNumberGenerator(0, 255);
+        int b = 255;
         int color = Color.argb(255, r, g, b);
         backgroundView.setBackgroundColor(color);
         this.submitButton.setTextColor(color);
@@ -123,7 +123,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initialize() {
-        this.random = new Random();
         utility = new Utility();
         this.firstNum = 48;
         this.secondNum = 12;

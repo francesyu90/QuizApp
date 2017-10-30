@@ -5,7 +5,6 @@ public class Question {
     private String question;
     private int firstNum;
     private int secondNum;
-    private int sum;
 
     private static Utility utility;
 
@@ -13,13 +12,18 @@ public class Question {
     private static final int MAX = 100;
 
     public Question() {
-        generateQuestion();
+        this.firstNum = utility.randomNumberGenerator(MAX);
+        this.secondNum = utility.randomNumberGenerator(MAX);
+        this.generateQuestion();
+    }
+
+    public Question(int firstNum, int secondNum) {
+        this.firstNum = firstNum;
+        this.secondNum = secondNum;
+        this.generateQuestion();
     }
 
     private void generateQuestion() {
-        this.firstNum = utility.randomNumberGenerator(MAX);
-        this.secondNum = utility.randomNumberGenerator(MAX);
-        this.sum = this.firstNum + this.secondNum;
         this.question = String.format(QUESTION_TEXT, this.firstNum, this.secondNum);
     }
 
@@ -28,7 +32,7 @@ public class Question {
     }
 
     public int getSum() {
-        return this.sum;
+        return this.firstNum + this.secondNum;
     }
 
 }
