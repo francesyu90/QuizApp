@@ -6,15 +6,12 @@ public class Question {
     private int firstNum;
     private int secondNum;
 
-    private static Utility utility;
-
     private static final String QUESTION_TEXT = "What is %s + %s?";
     private static final int MAX = 100;
 
     public Question() {
-        utility = new Utility();
-        this.firstNum = utility.randomNumberGenerator(MAX);
-        this.secondNum = utility.randomNumberGenerator(MAX);
+        this.firstNum = Utility.randomNumberGenerator(MAX);
+        this.secondNum = Utility.randomNumberGenerator(MAX);
         this.generateQuestion();
     }
 

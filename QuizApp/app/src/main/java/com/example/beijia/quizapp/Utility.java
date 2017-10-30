@@ -5,18 +5,14 @@ import java.util.Random;
 
 public class Utility {
 
-    private Random random;
+    private static Random random = new Random();
 
-    public Utility() {
-        random = new Random();
+    public static int randomNumberGenerator(int max) {
+        return random.nextInt(max);
     }
 
-    public Integer randomNumberGenerator(int max) {
-        return this.random.nextInt(max);
-    }
-
-    public int randomNumberGenerator(int min, int max) {
-        return this.random.nextInt(max - min + 1) + min;
+    public static int randomNumberGenerator(int min, int max) {
+        return random.nextInt(max - min + 1) + min;
     }
 
 }

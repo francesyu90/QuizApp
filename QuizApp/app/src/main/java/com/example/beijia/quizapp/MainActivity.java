@@ -11,8 +11,6 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.List;
-
 public class MainActivity extends AppCompatActivity {
 
     // view variables
@@ -25,11 +23,6 @@ public class MainActivity extends AppCompatActivity {
 
     private Question question;
 
-    private static Utility utility;
-
-    // string format templates
-    private static final String QUESTION_TEXT = "What is %s + %s?";
-
     private void assignViewToVariables() {
         this.questionTextView = (TextView)this.findViewById(R.id.questionText);
         this.choicesRadioGroup = (RadioGroup)this.findViewById(R.id.choicesRadioGroup);
@@ -41,8 +34,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void updateColor() {
         View backgroundView = this.findViewById(R.id.backgroundView);
-        int r = utility.randomNumberGenerator(0, 255);
-        int g = utility.randomNumberGenerator(0, 255);
+        int r = Utility.randomNumberGenerator(0, 255);
+        int g = Utility.randomNumberGenerator(0, 255);
         int b = 255;
         int color = Color.argb(255, r, g, b);
         backgroundView.setBackgroundColor(color);
@@ -62,11 +55,11 @@ public class MainActivity extends AppCompatActivity {
     private void updateChoices() {
 
         int sum = this.question.getSum();
-        int possibleAnswer1 = utility.randomNumberGenerator(100);
-        int possibleAnswer2 = utility.randomNumberGenerator(100);
+        int possibleAnswer1 = Utility.randomNumberGenerator(100);
+        int possibleAnswer2 = Utility.randomNumberGenerator(100);
 
         // determine which option has the correct sum
-        int pos = utility.randomNumberGenerator(0, 2);
+        int pos = Utility.randomNumberGenerator(0, 2);
 
         switch (pos) {
             case 0:
@@ -120,7 +113,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initialize() {
-        utility = new Utility();
         int firstNum = 48;
         int secondNum = 12;
         this.question = new Question(firstNum, secondNum);
