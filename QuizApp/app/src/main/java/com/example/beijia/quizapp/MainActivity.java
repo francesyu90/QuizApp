@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setOptionButtonText(RadioButton radioButton, int num) {
-        radioButton.setText(Integer.toString(num));
+        radioButton.setText(String.format("%s", num));
     }
 
     private void updateChoices() {
@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
         RadioButton selectedRadioButton = (RadioButton) this.findViewById(selectedId);
         CharSequence userInput = selectedRadioButton.getText();
         int sum = Integer.parseInt(userInput.toString());
-        int expectedSum = this.firstNum + this.secondNum;
+        int expectedSum = this.question.getSum();
         CharSequence text = (sum == expectedSum)? "Correct answer" : "Incorrect answer";
         int duration = Toast.LENGTH_SHORT;
 
@@ -124,8 +124,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void initialize() {
         utility = new Utility();
-        this.firstNum = 48;
-        this.secondNum = 12;
+        int firstNum = 48;
+        int secondNum = 12;
+        this.question = new Question(firstNum, secondNum);
     }
 
     @Override
