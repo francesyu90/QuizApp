@@ -27,17 +27,10 @@ public class MainActivity extends AppCompatActivity {
     private int firstNum;
     private int secondNum;
 
-    private static final int MAX = 100;
+    private static Utility utility;
 
     // string format templates
     private static final String QUESTION_TEXT = "What is %s + %s?";
-
-    private Integer randomNumberGenerator() {
-        return this.random.nextInt(MAX);
-    }
-    private Integer randomNumberGenerator(int min, int max) {
-        return this.random.nextInt(max - min + 1) + min;
-    }
 
     private void assignViewToVariables() {
         this.questionTextView = (TextView)this.findViewById(R.id.questionText);
@@ -50,17 +43,17 @@ public class MainActivity extends AppCompatActivity {
 
     private void updateColor() {
         View backgroundView = this.findViewById(R.id.backgroundView);
-        int r = this.randomNumberGenerator(0, 255);
-        int g = this.randomNumberGenerator(0, 255);
-        int b = this.randomNumberGenerator(0, 255);
+        int r = utility.randomNumberGenerator(0, 255);
+        int g = utility.randomNumberGenerator(0, 255);
+        int b = utility.randomNumberGenerator(0, 255);
         int color = Color.argb(255, r, g, b);
         backgroundView.setBackgroundColor(color);
         this.submitButton.setTextColor(color);
     }
 
     private void updateQuestion() {
-        this.firstNum = this.randomNumberGenerator();
-        this.secondNum = this.randomNumberGenerator();
+        this.firstNum = utility.randomNumberGenerator(100);
+        this.secondNum = utility.randomNumberGenerator(100);
         String question = String.format(QUESTION_TEXT, this.firstNum, this.secondNum);
         this.questionTextView.setText(question);
     }
@@ -72,11 +65,11 @@ public class MainActivity extends AppCompatActivity {
     private void updateChoices() {
 
         int sum = this.firstNum + this.secondNum;
-        int possibleAnswer1 = this.randomNumberGenerator();
-        int possibleAnswer2 = this.randomNumberGenerator();
+        int possibleAnswer1 = utility.randomNumberGenerator(100);
+        int possibleAnswer2 = utility.randomNumberGenerator(100);
 
         // determine which option has the correct sum
-        int pos = this.randomNumberGenerator(0, 2);
+        int pos = utility.randomNumberGenerator(0, 2);
 
         switch (pos) {
             case 0:
@@ -131,6 +124,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void initialize() {
         this.random = new Random();
+        utility = new Utility();
         this.firstNum = 48;
         this.secondNum = 12;
     }
