@@ -12,6 +12,7 @@ public class Question {
     private static final int MAX = 100;
 
     public Question() {
+        utility = new Utility();
         this.firstNum = utility.randomNumberGenerator(MAX);
         this.secondNum = utility.randomNumberGenerator(MAX);
         this.generateQuestion();

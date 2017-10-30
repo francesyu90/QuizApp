@@ -19,12 +19,4 @@ public class Utility {
         return this.random.nextInt(max - min + 1) + min;
     }
 
-    public Question[] generateQuestionList(int size) {
-        Questions questions = new Questions();
-        for(int i = 0; i < size; i++) {
-            questions.addNewQuestion(new Question());
-        }
-        return questions.getQuestionArray();
-    }
-
 }

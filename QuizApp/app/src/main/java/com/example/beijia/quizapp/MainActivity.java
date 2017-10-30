@@ -11,6 +11,8 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
 
     // view variables
@@ -21,8 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private RadioButton optionBButton;
     private RadioButton optionCButton;
 
-    private int firstNum;
-    private int secondNum;
+    private Question question;
 
     private static Utility utility;
 
@@ -49,9 +50,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void updateQuestion() {
-        this.firstNum = utility.randomNumberGenerator(100);
-        this.secondNum = utility.randomNumberGenerator(100);
-        String question = String.format(QUESTION_TEXT, this.firstNum, this.secondNum);
+        this.question = new Question();
+        String question = this.question.getQuestion();
         this.questionTextView.setText(question);
     }
 
@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void updateChoices() {
 
-        int sum = this.firstNum + this.secondNum;
+        int sum = this.question.getSum();
         int possibleAnswer1 = utility.randomNumberGenerator(100);
         int possibleAnswer2 = utility.randomNumberGenerator(100);
 
@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
         RadioButton selectedRadioButton = (RadioButton) this.findViewById(selectedId);
         CharSequence userInput = selectedRadioButton.getText();
         int sum = Integer.parseInt(userInput.toString());
-        int expectedSum = this.firstNum + this.secondNum;
+        int expectedSum = this.question.getSum();
         CharSequence text = (sum == expectedSum)? "Correct answer" : "Incorrect answer";
         int duration = Toast.LENGTH_SHORT;
 
@@ -121,17 +121,18 @@ public class MainActivity extends AppCompatActivity {
 
     private void initialize() {
         utility = new Utility();
-        this.firstNum = 48;
-        this.secondNum = 12;
+        int firstNum = 48;
+        int secondNum = 12;
+        this.question = new Question(firstNum, secondNum);
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        this.initialize();
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        this.initialize();
 
         this.assignViewToVariables();
         this.setSubmitButtonListener();
