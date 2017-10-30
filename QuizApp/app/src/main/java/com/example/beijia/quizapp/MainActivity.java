@@ -1,9 +1,9 @@
 package com.example.beijia.quizapp;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
@@ -46,6 +46,16 @@ public class MainActivity extends AppCompatActivity {
         this.optionAButton = (RadioButton) this.findViewById(R.id.optionAButton);
         this.optionBButton = (RadioButton) this.findViewById(R.id.optionBButton);
         this.optionCButton = (RadioButton) this.findViewById(R.id.optionCButton);
+    }
+
+    private void updateColor() {
+        View backgroundView = this.findViewById(R.id.backgroundView);
+        int r = this.randomNumberGenerator(0, 255);
+        int g = this.randomNumberGenerator(0, 255);
+        int b = this.randomNumberGenerator(0, 255);
+        int color = Color.argb(255, r, g, b);
+        backgroundView.setBackgroundColor(color);
+        this.submitButton.setTextColor(color);
     }
 
     private void updateQuestion() {
@@ -102,24 +112,33 @@ public class MainActivity extends AppCompatActivity {
         toast.show();
     }
 
+    private void render() {
+        updateColor();
+        updateQuestion();
+        updateChoices();
+    }
+
     private void setSubmitButtonListener() {
         View.OnClickListener listener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 showResponse();
-                updateQuestion();
-                updateChoices();
+                render();
             }
         };
         this.submitButton.setOnClickListener(listener);
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-
+    private void initialize() {
         this.random = new Random();
         this.firstNum = 48;
         this.secondNum = 12;
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+
+        this.initialize();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
