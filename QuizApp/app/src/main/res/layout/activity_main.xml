@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:paddingTop="20dp"
         android:paddingBottom="20dp"
-        android:id="@+id/radioGroup"
+        android:id="@+id/choicesRadioGroup"
         android:layout_below="@+id/questionText"
         android:layout_centerHorizontal="true">
 
@@ -87,7 +87,7 @@
         android:textAllCaps="false"
         android:textColor="#53bbb4"
         android:textSize="26sp"
-        android:layout_below="@+id/radioGroup"
+        android:layout_below="@+id/choicesRadioGroup"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
